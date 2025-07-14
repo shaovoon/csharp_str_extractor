@@ -304,6 +304,29 @@ namespace StringExtractTests
 
             Assert.IsTrue(result);
         }
+        [Test]
+        public void IsInputMatchedFmtFailTest()
+        {
+            string fmt = "Name:{t}, Gender:{}, Salary:{}";
 
+            string input = "Name:  Sherry William  , Gender1:F, Salary:3600";
+
+            bool result = StringExtractor.IsInputMatchedFmt(input, fmt);
+
+            Assert.IsFalse(result);
+        }
+        [Test]
+        public void IsInputMatchedTokensFailTest()
+        {
+            string fmt = "Name:{t}, Gender:{}, Salary:{}";
+
+            string input = "Name:  Sherry William  , Gender1:F, Salary:3600";
+
+            List<Token> tokens = StringExtractor.TokenizeFmtString(fmt);
+
+            bool result = StringExtractor.IsInputMatchedTokens(input, tokens);
+
+            Assert.IsFalse(result);
+        }
     }
 }
