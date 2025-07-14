@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StringExtractLib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -350,6 +351,73 @@ namespace StringExtractLib
             output3 = results[2];
             output4 = results[3];
             output5 = results[4];
+        }
+
+        public static bool IsInputMatchedFmt(string input, string fmt)
+        {
+            List<Token> tokens = TokenizeFmtString(fmt);
+
+            int pos = 0;
+            int prev_pos = 0;
+            foreach (var token in tokens)
+            {
+                if (String.IsNullOrWhiteSpace(token.prefix) == false)
+                {
+                    pos = input.IndexOf(token.prefix, prev_pos);
+
+                    if (pos != -1)
+                    {
+                        if (pos < prev_pos)
+                            return false;
+                    }
+                    prev_pos = pos;
+                }
+
+                if (String.IsNullOrWhiteSpace(token.postfix) == false)
+                {
+                    pos = input.IndexOf(token.postfix, prev_pos);
+
+                    if (pos != -1)
+                    {
+                        if (pos < prev_pos)
+                            return false;
+                    }
+                    prev_pos = pos;
+                }
+            }
+            return true;
+        }
+        public static bool IsInputMatchedTokens(string input, List<Token> tokens)
+        {
+            int pos = 0;
+            int prev_pos = 0;
+            foreach (var token in tokens)
+            {
+                if (String.IsNullOrWhiteSpace(token.prefix) == false)
+                {
+                    pos = input.IndexOf(token.prefix, prev_pos);
+
+                    if (pos != -1)
+                    {
+                        if (pos < prev_pos)
+                            return false;
+                    }
+                    prev_pos = pos;
+                }
+
+                if (String.IsNullOrWhiteSpace(token.postfix) == false)
+                {
+                    pos = input.IndexOf(token.postfix, prev_pos);
+
+                    if (pos != -1)
+                    {
+                        if (pos < prev_pos)
+                            return false;
+                    }
+                    prev_pos = pos;
+                }
+            }
+            return true;
         }
     }
 }

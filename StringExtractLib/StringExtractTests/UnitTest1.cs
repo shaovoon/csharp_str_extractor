@@ -280,6 +280,30 @@ namespace StringExtractTests
 
             Assert.AreEqual(salary, "3600");
         }
+        [Test]
+        public void IsInputMatchedFmtTest()
+        {
+            string fmt = "Name:{t}, Gender:{}, Salary:{}";
+
+            string input = "Name:  Sherry William  , Gender:F, Salary:3600";
+
+            bool result = StringExtractor.IsInputMatchedFmt(input, fmt);
+
+            Assert.IsTrue(result);
+        }
+        [Test]
+        public void IsInputMatchedTokensTest()
+        {
+            string fmt = "Name:{t}, Gender:{}, Salary:{}";
+
+            string input = "Name:  Sherry William  , Gender:F, Salary:3600";
+
+            List<Token> tokens = StringExtractor.TokenizeFmtString(fmt);
+
+            bool result = StringExtractor.IsInputMatchedTokens(input, tokens);
+
+            Assert.IsTrue(result);
+        }
 
     }
 }
