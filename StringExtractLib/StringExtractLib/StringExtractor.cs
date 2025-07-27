@@ -205,8 +205,17 @@ namespace StringExtractLib
 
                     if (postfix_pos == -1)
                     {
-                        Console.WriteLine("postfix_pos Error");
-                        return;
+                        postfix_pos = prefix_pos;
+                        if (String.IsNullOrEmpty(curr.postfix) == false)
+                        {
+                            postfix_pos = input.IndexOf(curr.postfix, postfix_pos);
+                        }
+
+                        if (postfix_pos == -1)
+                        {
+                            Console.WriteLine("postfix_pos Error");
+                            return;
+                        }
                     }
                 }
                 else

@@ -328,5 +328,52 @@ namespace StringExtractTests
 
             Assert.IsFalse(result);
         }
+        [Test]
+        public void EmptyTokenized()
+        {
+            string fmt = "Name:{t}, Gender:{}, Salary:{}";
+
+            string input = "Name:  Sherry William  , Gender:, Salary:3600";
+
+            string name = "";
+
+            string gender = "";
+
+            string salary = "";
+
+            List<Token> tokens = StringExtractor.TokenizeFmtString(fmt);
+
+            StringExtractor.ExtractFromToken(input, tokens, ref name, ref gender, ref salary);
+
+            Assert.AreEqual(name, "Sherry William");
+
+            Assert.AreEqual(gender, "");
+
+            Assert.AreEqual(salary, "3600");
+        }
+        [Test]
+        public void LastEmptyTokenized()
+        {
+            string fmt = "Name:{t}, Gender:{}, Salary:{}";
+
+            string input = "Name:  Sherry William  , Gender:F, Salary:";
+
+            string name = "";
+
+            string gender = "A";
+
+            string salary = "";
+
+            List<Token> tokens = StringExtractor.TokenizeFmtString(fmt);
+
+            StringExtractor.ExtractFromToken(input, tokens, ref name, ref gender, ref salary);
+
+            Assert.AreEqual(name, "Sherry William");
+
+            Assert.AreEqual(gender, "F");
+
+            Assert.AreEqual(salary, "");
+        }
+
     }
 }
