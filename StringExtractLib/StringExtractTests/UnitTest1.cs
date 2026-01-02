@@ -20,9 +20,16 @@ namespace StringExtractTests
 
             string id = "";
 
-            StringExtractor.Extract(input, fmt, ref id);
+            bool isMatched = StringExtractor.IsInputMatchedFmt(input, fmt);
 
-            Assert.AreEqual(id, "123");
+            Assert.IsTrue(isMatched);
+
+            if (isMatched)
+            {
+                StringExtractor.Extract(input, fmt, ref id);
+
+                Assert.AreEqual(id, "123");
+            }
         }
         [Test]
         public void StringWithTimestamp()
@@ -33,9 +40,16 @@ namespace StringExtractTests
 
             string id = "";
 
-            StringExtractor.Extract(input, fmt, ref id);
+            bool isMatched = StringExtractor.IsInputMatchedFmt(input, fmt);
 
-            Assert.AreEqual(id, "123");
+            Assert.IsTrue(isMatched);
+
+            if (isMatched)
+            {
+                StringExtractor.Extract(input, fmt, ref id);
+
+                Assert.AreEqual(id, "123");
+            }
         }
         [Test]
         public void StringWithSuffix()
@@ -46,9 +60,16 @@ namespace StringExtractTests
 
             string id = "";
 
-            StringExtractor.Extract(input, fmt, ref id);
+            bool isMatched = StringExtractor.IsInputMatchedFmt(input, fmt);
 
-            Assert.AreEqual(id, "123");
+            Assert.IsTrue(isMatched);
+
+            if (isMatched)
+            {
+                StringExtractor.Extract(input, fmt, ref id);
+
+                Assert.AreEqual(id, "123");
+            }
         }
         [Test]
         public void TrimString()
@@ -59,9 +80,16 @@ namespace StringExtractTests
 
             string name = "";
 
-            StringExtractor.Extract(input, fmt, ref name);
+            bool isMatched = StringExtractor.IsInputMatchedFmt(input, fmt);
 
-            Assert.AreEqual(name, "Sherry William");
+            Assert.IsTrue(isMatched);
+
+            if (isMatched)
+            {
+                StringExtractor.Extract(input, fmt, ref name);
+
+                Assert.AreEqual(name, "Sherry William");
+            }
         }
         [Test]
         public void HexString()
@@ -72,9 +100,16 @@ namespace StringExtractTests
 
             string hex = "";
 
-            StringExtractor.Extract(input, fmt, ref hex);
+            bool isMatched = StringExtractor.IsInputMatchedFmt(input, fmt);
 
-            Assert.AreEqual(hex, "10");
+            Assert.IsTrue(isMatched);
+
+            if (isMatched)
+            {
+                StringExtractor.Extract(input, fmt, ref hex);
+
+                Assert.AreEqual(hex, "10");
+            }
         }
         [Test]
         public void HexString2()
@@ -85,9 +120,16 @@ namespace StringExtractTests
 
             string hex = "";
 
-            StringExtractor.Extract(input, fmt, ref hex);
+            bool isMatched = StringExtractor.IsInputMatchedFmt(input, fmt);
 
-            Assert.AreEqual(hex, "10");
+            Assert.IsTrue(isMatched);
+
+            if (isMatched)
+            {
+                StringExtractor.Extract(input, fmt, ref hex);
+
+                Assert.AreEqual(hex, "10");
+            }
         }
         [Test]
         public void HexString3()
@@ -98,9 +140,16 @@ namespace StringExtractTests
 
             string hex = "";
 
-            StringExtractor.Extract(input, fmt, ref hex);
+            bool isMatched = StringExtractor.IsInputMatchedFmt(input, fmt);
 
-            Assert.AreEqual(hex, "10");
+            Assert.IsTrue(isMatched);
+
+            if (isMatched)
+            {
+                StringExtractor.Extract(input, fmt, ref hex);
+
+                Assert.AreEqual(hex, "10");
+            }
         }
         [Test]
         public void IgnoreVariable()
@@ -111,9 +160,16 @@ namespace StringExtractTests
 
             string hex = "";
 
-            StringExtractor.Extract(input, fmt, ref hex);
+            bool isMatched = StringExtractor.IsInputMatchedFmt(input, fmt);
 
-            Assert.AreEqual(hex, "10");
+            Assert.IsTrue(isMatched);
+
+            if (isMatched)
+            {
+                StringExtractor.Extract(input, fmt, ref hex);
+
+                Assert.AreEqual(hex, "10");
+            }
         }
         [Test]
         public void ThreeVariable()
@@ -128,13 +184,20 @@ namespace StringExtractTests
 
             string salary = "";
 
-            StringExtractor.Extract(input, fmt, ref name, ref gender, ref salary);
+            bool isMatched = StringExtractor.IsInputMatchedFmt(input, fmt);
 
-            Assert.AreEqual(name, "Sherry William");
+            Assert.IsTrue(isMatched);
 
-            Assert.AreEqual(gender, "F");
+            if (isMatched)
+            {
+                StringExtractor.Extract(input, fmt, ref name, ref gender, ref salary);
 
-            Assert.AreEqual(salary, "3600");
+                Assert.AreEqual(name, "Sherry William");
+
+                Assert.AreEqual(gender, "F");
+
+                Assert.AreEqual(salary, "3600");
+            }
         }
         //====================================================
         [Test]
@@ -148,9 +211,16 @@ namespace StringExtractTests
 
             List<Token> tokens = StringExtractor.TokenizeFmtString(fmt);
 
-            StringExtractor.ExtractFromToken(input, tokens, ref id);
+            bool isMatched = StringExtractor.IsInputMatchedTokens(input, tokens);
 
-            Assert.AreEqual(id, "123");
+            Assert.IsTrue(isMatched);
+
+            if (isMatched)
+            {
+                StringExtractor.ExtractFromToken(input, tokens, ref id);
+
+                Assert.AreEqual(id, "123");
+            }
         }
         [Test]
         public void StringWithTimestampTokenized()
@@ -163,9 +233,16 @@ namespace StringExtractTests
 
             List<Token> tokens = StringExtractor.TokenizeFmtString(fmt);
 
-            StringExtractor.ExtractFromToken(input, tokens, ref id);
+            bool isMatched = StringExtractor.IsInputMatchedTokens(input, tokens);
 
-            Assert.AreEqual(id, "123");
+            Assert.IsTrue(isMatched);
+
+            if (isMatched)
+            {
+                StringExtractor.ExtractFromToken(input, tokens, ref id);
+
+                Assert.AreEqual(id, "123");
+            }
         }
         [Test]
         public void StringWithSuffixTokenized()
@@ -178,9 +255,16 @@ namespace StringExtractTests
 
             List<Token> tokens = StringExtractor.TokenizeFmtString(fmt);
 
-            StringExtractor.ExtractFromToken(input, tokens, ref id);
+            bool isMatched = StringExtractor.IsInputMatchedTokens(input, tokens);
 
-            Assert.AreEqual(id, "123");
+            Assert.IsTrue(isMatched);
+
+            if (isMatched)
+            {
+                StringExtractor.ExtractFromToken(input, tokens, ref id);
+
+                Assert.AreEqual(id, "123");
+            }
         }
         [Test]
         public void TrimStringTokenized()
@@ -193,9 +277,16 @@ namespace StringExtractTests
 
             List<Token> tokens = StringExtractor.TokenizeFmtString(fmt);
 
-            StringExtractor.ExtractFromToken(input, tokens, ref name);
+            bool isMatched = StringExtractor.IsInputMatchedTokens(input, tokens);
 
-            Assert.AreEqual(name, "Sherry William");
+            Assert.IsTrue(isMatched);
+
+            if (isMatched)
+            {
+                StringExtractor.ExtractFromToken(input, tokens, ref name);
+
+                Assert.AreEqual(name, "Sherry William");
+            }
         }
         [Test]
         public void HexStringTokenized()
@@ -208,9 +299,16 @@ namespace StringExtractTests
 
             List<Token> tokens = StringExtractor.TokenizeFmtString(fmt);
 
-            StringExtractor.ExtractFromToken(input, tokens, ref hex);
+            bool isMatched = StringExtractor.IsInputMatchedTokens(input, tokens);
 
-            Assert.AreEqual(hex, "10");
+            Assert.IsTrue(isMatched);
+
+            if (isMatched)
+            {
+                StringExtractor.ExtractFromToken(input, tokens, ref hex);
+
+                Assert.AreEqual(hex, "10");
+            }
         }
         [Test]
         public void HexStringTokenized2()
@@ -223,9 +321,16 @@ namespace StringExtractTests
 
             List<Token> tokens = StringExtractor.TokenizeFmtString(fmt);
 
-            StringExtractor.ExtractFromToken(input, tokens, ref hex);
+            bool isMatched = StringExtractor.IsInputMatchedTokens(input, tokens);
 
-            Assert.AreEqual(hex, "10");
+            Assert.IsTrue(isMatched);
+
+            if (isMatched)
+            {
+                StringExtractor.ExtractFromToken(input, tokens, ref hex);
+
+                Assert.AreEqual(hex, "10");
+            }
         }
         [Test]
         public void HexStringTokenized3()
@@ -238,9 +343,16 @@ namespace StringExtractTests
 
             List<Token> tokens = StringExtractor.TokenizeFmtString(fmt);
 
-            StringExtractor.ExtractFromToken(input, tokens, ref hex);
+            bool isMatched = StringExtractor.IsInputMatchedTokens(input, tokens);
 
-            Assert.AreEqual(hex, "10");
+            Assert.IsTrue(isMatched);
+
+            if (isMatched)
+            {
+                StringExtractor.ExtractFromToken(input, tokens, ref hex);
+
+                Assert.AreEqual(hex, "10");
+            }
         }
         [Test]
         public void IgnoreVariableTokenized()
@@ -253,9 +365,16 @@ namespace StringExtractTests
 
             List<Token> tokens = StringExtractor.TokenizeFmtString(fmt);
 
-            StringExtractor.ExtractFromToken(input, tokens, ref hex);
+            bool isMatched = StringExtractor.IsInputMatchedTokens(input, tokens);
 
-            Assert.AreEqual(hex, "10");
+            Assert.IsTrue(isMatched);
+
+            if (isMatched)
+            {
+                StringExtractor.ExtractFromToken(input, tokens, ref hex);
+
+                Assert.AreEqual(hex, "10");
+            }
         }
         [Test]
         public void ThreeVariableTokenized()
@@ -272,13 +391,20 @@ namespace StringExtractTests
 
             List<Token> tokens = StringExtractor.TokenizeFmtString(fmt);
 
-            StringExtractor.ExtractFromToken(input, tokens, ref name, ref gender, ref salary);
+            bool isMatched = StringExtractor.IsInputMatchedTokens(input, tokens);
 
-            Assert.AreEqual(name, "Sherry William");
+            Assert.IsTrue(isMatched);
 
-            Assert.AreEqual(gender, "F");
+            if (isMatched)
+            {
+                StringExtractor.ExtractFromToken(input, tokens, ref name, ref gender, ref salary);
 
-            Assert.AreEqual(salary, "3600");
+                Assert.AreEqual(name, "Sherry William");
+
+                Assert.AreEqual(gender, "F");
+
+                Assert.AreEqual(salary, "3600");
+            }
         }
         [Test]
         public void IsInputMatchedFmtTest()
@@ -343,13 +469,20 @@ namespace StringExtractTests
 
             List<Token> tokens = StringExtractor.TokenizeFmtString(fmt);
 
-            StringExtractor.ExtractFromToken(input, tokens, ref name, ref gender, ref salary);
+            bool isMatched = StringExtractor.IsInputMatchedTokens(input, tokens);
 
-            Assert.AreEqual(name, "Sherry William");
+            Assert.IsTrue(isMatched);
 
-            Assert.AreEqual(gender, "");
+            if (isMatched)
+            {
+                StringExtractor.ExtractFromToken(input, tokens, ref name, ref gender, ref salary);
 
-            Assert.AreEqual(salary, "3600");
+                Assert.AreEqual(name, "Sherry William");
+
+                Assert.AreEqual(gender, "");
+
+                Assert.AreEqual(salary, "3600");
+            }
         }
         [Test]
         public void LastEmptyTokenized()
@@ -366,13 +499,20 @@ namespace StringExtractTests
 
             List<Token> tokens = StringExtractor.TokenizeFmtString(fmt);
 
-            StringExtractor.ExtractFromToken(input, tokens, ref name, ref gender, ref salary);
+            bool isMatched = StringExtractor.IsInputMatchedTokens(input, tokens);
 
-            Assert.AreEqual(name, "Sherry William");
+            Assert.IsTrue(isMatched);
 
-            Assert.AreEqual(gender, "F");
+            if (isMatched)
+            {
+                StringExtractor.ExtractFromToken(input, tokens, ref name, ref gender, ref salary);
 
-            Assert.AreEqual(salary, "");
+                Assert.AreEqual(name, "Sherry William");
+
+                Assert.AreEqual(gender, "F");
+
+                Assert.AreEqual(salary, "");
+            }
         }
 
     }
